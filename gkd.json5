@@ -1,0 +1,760 @@
+// GKD 搜索历史清理订阅
+// 基于用户于 2026-08-27 提供的 52 份 GKD 快照编写。
+// 说明：规则在对应“搜索页/历史记录页”出现时自动执行清理流程；不会从 APP 首页自动导航到搜索页。
+// 夸克网盘因 WebView 未暴露可用无障碍节点，仅能使用坐标点击，故默认关闭。
+{
+  id: 82720261,
+  name: 'GKD 搜索历史清理',
+  version: 1,
+  author: '37-7',
+  updateUrl: 'https://raw.githubusercontent.com/37-7/GKD-FuckSearchHistory/main/gkd.json5',
+  supportUri: 'https://github.com/37-7/GKD-FuckSearchHistory/issues',
+  categories: [
+    {
+      key: 0,
+      name: '功能类',
+    },
+  ],
+  apps: [
+    {
+      id: 'com.xingin.xhs',
+      name: '小红书',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          desc: '进入搜索页后依次点击删除按钮、全部删除、确认。',
+          matchRoot: true,
+          activityIds: 'com.xingin.alioth.search.GlobalSearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[text="历史记录"][visibleToUser=true] + ViewGroup > @ViewGroup[clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击全部删除',
+              matches: '@[clickable=true][visibleToUser=true] > [text="全部删除"][visibleToUser=true]',
+            },
+            {
+              key: 2,
+              preKeys: [1],
+              name: '3.确认删除',
+              matches: [
+                '[text="删除全部搜索历史"][visibleToUser=true]',
+                '[text="确认"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.zhihu.hydrogen.x',
+      name: 'Hydrogen',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.jesse205.superlua.Main',
+          rules: {
+            key: 0,
+            name: '点击历史记录删除按钮',
+            matches: '[text="历史记录"][visibleToUser=true] + @ImageView[desc="删除"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'net.ngee.pixiver',
+      name: 'PXVR',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'net.ngee.commons.MainActivity',
+          rules: {
+            key: 0,
+            name: '点击清除历史记录',
+            action: 'clickCenter',
+            matches: '[text="清除历史记录"][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.baidu.tieba',
+      name: '百度贴吧',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.baidu.tieba.coreSearch.SquareSearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[text="搜索历史"][visibleToUser=true] + @ImageView[clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.确认删除',
+              matches: [
+                '[text="确定删除全部历史记录？"][visibleToUser=true]',
+                '[vid="yes"][text="确定"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.yixiu.magicsquare',
+      name: '柠檬音乐',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.ryanheise.audioservice.AudioServiceActivity',
+          rules: {
+            key: 0,
+            name: '点击清空',
+            matches: '[desc="搜索历史"][visibleToUser=true] + @View[desc="清空"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.netease.cloudmusic',
+      name: '网易云音乐',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.netease.cloudmusic.music.biz.search.activity.SearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[text="搜索历史"][visibleToUser=true] + @ViewGroup[clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击清空',
+              matches: [
+                '[text="确定清空全部历史记录？"][visibleToUser=true]',
+                '[vid="buttonDefaultPositive"][text="清空"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'tv.danmaku.bili',
+      name: '哔哩哔哩',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.bilibili.search2.main.BiliMainSearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[vid="delete_all"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击全部删除',
+              matches: '[vid="common_dialog_positive_btn"][text="全部删除"][clickable=true][visibleToUser=true]',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.tencent.mm',
+      name: '微信',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          desc: '适用于快照中的微信搜索页；同一规则也覆盖你提供的两个微信快照。',
+          matchRoot: true,
+          activityIds: 'com.tencent.mm.plugin.webview.ui.tools.fts.MMFTSSOSHomeWebViewUI',
+          rules: {
+            key: 0,
+            name: '点击清除历史',
+            matches: '[desc="清除历史"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'cn.xiaochuankeji.tieba',
+      name: '最右',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          desc: '先清除“搜过的话题”，再清除“历史搜索”，共两轮。',
+          matchRoot: true,
+          forcedTime: 4000,
+          activityIds: 'cn.xiaochuankeji.tieba.ui.search.ui.SearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击话题历史删除按钮',
+              matches: '[vid="iv_clear_history_for_topic"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击话题全部删除',
+              matches: '[vid="tv_delete_all_for_topic"][text="全部删除"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 2,
+              preKeys: [1],
+              name: '3.确认删除话题历史',
+              matches: [
+                '[text="确认删除全部搜过的话题"][visibleToUser=true]',
+                '[vid="ZYDialog_positive_btn"][text="确定"][clickable=true][visibleToUser=true]',
+              ],
+            },
+            {
+              key: 3,
+              preKeys: [2],
+              name: '4.点击搜索历史删除按钮',
+              matches: '[vid="iv_clear_history"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 4,
+              preKeys: [3],
+              name: '5.点击搜索历史全部删除',
+              matches: '[vid="tv_delete_all"][text="全部删除"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 5,
+              preKeys: [4],
+              name: '6.确认删除搜索历史',
+              matches: [
+                '[text="确认删除全部历史搜索"][visibleToUser=true]',
+                '[vid="ZYDialog_positive_btn"][text="确定"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.weico.international',
+      name: '微博',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.weico.international.ui.search.SearchActivity',
+          rules: {
+            key: 0,
+            name: '点击清除',
+            matches: '[vid="act_search_history_cancel"][text="清除"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.ximalaya.ting.lite',
+      name: '喜马拉雅极速版',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.ximalaya.ting.android.host.activity.MainActivity',
+          rules: {
+            key: 0,
+            name: '点击删除按钮',
+            matches: '[vid="search_clear_history"][desc="清除历史数据"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.quark.clouddrive',
+      name: '夸克网盘',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史（实验性坐标规则）',
+          desc: '快照中的 WebView 没有暴露任何按钮文字/语义，只能按 1200×2670 快照坐标点击。为防止 BrowserActivity 其它页面误触，默认关闭；仅建议在确认页面一致后手动启用测试。',
+          enable: false,
+          matchRoot: true,
+          forcedTime: 5000,
+          activityIds: 'com.ucpro.BrowserActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.坐标点击垃圾桶',
+              actionMaximum: 1,
+              resetMatch: 'activity',
+              matches: '[parent=null][width=1200][height=2670]',
+              position: {
+                x: 'screenWidth*0.925',
+                y: 'screenHeight*0.206',
+              },
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.坐标点击清空',
+              actionDelay: 500,
+              actionMaximum: 1,
+              resetMatch: 'activity',
+              matches: '[parent=null][width=1200][height=2670]',
+              position: {
+                x: 'screenWidth*0.775',
+                y: 'screenHeight*0.206',
+              },
+            },
+            {
+              key: 2,
+              preKeys: [1],
+              name: '3.坐标点击全部删除',
+              actionDelay: 700,
+              actionMaximum: 1,
+              resetMatch: 'activity',
+              matches: '[parent=null][width=1200][height=2670]',
+              position: {
+                x: 'screenWidth*0.72',
+                y: 'screenHeight*0.925',
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.baidu.netdisk',
+      name: '百度网盘',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.baidu.netdisk.kmp.bridge.KmpSharedActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[desc="search_history_delete"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击全部删除',
+              matches: '[text="全部删除"][clickable=true][visibleToUser=true]',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.baidu.drive.app',
+      name: '百度网盘国际版',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          desc: '快照把整行“历史”合并成一个可点击节点，因此在该节点内相对定位到右侧垃圾桶。',
+          matchRoot: true,
+          activityIds: 'com.baidu.netdisk.flutter.ui.FlutterBusinessActivity',
+          rules: {
+            key: 0,
+            name: '点击垃圾桶',
+            action: 'clickCenter',
+            matches: '[desc="历史"][clickable=true][visibleToUser=true]',
+            position: {
+              right: 75,
+              top: 'height/2',
+            },
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.coolapk.market',
+      name: '酷安',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.coolapk.market.view.search.SuperSearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[text="搜索历史"][visibleToUser=true] + @LinearLayout[vid="close_view"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.确认清除',
+              matches: [
+                '[text="确定要清除全部搜索历史么？"][visibleToUser=true]',
+                '@View[clickable=true][visibleToUser=true] > [text="确认清除"][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.nowcasting.activity',
+      name: '彩云天气',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动关闭更新提示',
+          desc: '按你的要求自动点击“算了吧”。',
+          matchRoot: true,
+          activityIds: 'com.nowcasting.activity.WeatherActivity',
+          rules: {
+            key: 0,
+            name: '点击算了吧',
+            matches: '[text="算了吧"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.qooapp.qoohelper',
+      name: 'QooApp',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.qooapp.qoohelper.arch.search.v.SearchActivity',
+          rules: {
+            key: 0,
+            name: '点击删除按钮',
+            matches: '[vid="itv_search_history_clear"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.taptap',
+      name: 'TapTap',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.taptap.infra.page.core.activity.PageProxyActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击清除',
+              matches: '[text="历史搜索"][visibleToUser=true] + @LinearLayout[clickable=true][visibleToUser=true] > [text="清除"][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击清空',
+              matches: [
+                '[text="清空搜索历史"][visibleToUser=true]',
+                '[text="清空"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.heytap.market',
+      name: '软件商店',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.heytap.market.search.core.activity.SearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[vid="btn_clear_history_item"][desc="清除记录"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击清除',
+              matches: [
+                '[text="要清除全部搜索记录吗？"][visibleToUser=true]',
+                '[text="清除"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.xiaomi.market',
+      name: '小米系统应用商店',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.xiaomi.market.ui.SearchActivityPhone',
+          rules: {
+            key: 0,
+            name: '点击删除按钮',
+            matches: '[vid="clearHistory"][desc="清除搜索历史"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'info.muge.appshare',
+      name: 'AppShare',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'info.muge.appshare.MainActivity',
+          rules: {
+            key: 0,
+            name: '点击全部删除',
+            matches: '@View[clickable=true][visibleToUser=true] > [text="全部删除"][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.youdao.dict',
+      name: '网易有道词典',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.youdao.dict.activity.MainActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[vid="iv_delete_history"][desc="删除"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击确定',
+              matches: [
+                '[text="确定清空查询历史吗？"][visibleToUser=true]',
+                '[vid="tv_confirm"][text="确定"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'cn.wps.yun',
+      name: '金山文档',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'cn.wps.yun.ui.search.SearchActivity',
+          rules: {
+            key: 0,
+            name: '点击删除按钮',
+            matches: '[text="搜索记录"][vid="leftText"][visibleToUser=true] + @ImageView[vid="rightIcon"][clickable=true][visibleToUser=true]',
+          },
+        },
+      ],
+    },
+    {
+      id: 'com.alicloud.databox',
+      name: '阿里云盘',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.alicloud.databox.MainActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[text="最近搜索"][vid="tvTitle"][visibleToUser=true] + @ImageView[vid="ivAction"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击确认',
+              matches: [
+                '[text="是否删除当前模块的所有搜索记录？"][visibleToUser=true]',
+                '[vid="md_button_positive"][text="确认"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.sankuai.meituan',
+      name: '美团',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.sankuai.meituan.search.home.SearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[vid="search_history_clear"][desc="清除历史记录"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击确认',
+              matches: [
+                '[text="确认删除全部历史记录？"][visibleToUser=true]',
+                'Button[text="确认"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.taobao.taobao',
+      name: '淘宝',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.taobao.search.uniform.SearchActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[vid="delete_btn"][desc="删除搜索历史"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击全部删除',
+              matches: '[vid="tv_delete_all"][text="全部删除"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 2,
+              preKeys: [1],
+              name: '3.点击确认',
+              matches: [
+                '[text="确认删除全部历史记录？"][visibleToUser=true]',
+                'Button[text="确认"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.taobao.idlefish',
+      name: '闲鱼',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          desc: '垃圾桶没有独立无障碍节点，按“全部”文字向左偏移点击垃圾桶。',
+          matchRoot: true,
+          forcedTime: 2500,
+          activityIds: 'com.idlefish.flutterbridge.flutterboost.boost.FishFlutterBoostActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击垃圾桶',
+              action: 'clickCenter',
+              matches: [
+                '[desc*="历"][desc*="史"][desc*="搜"][desc*="索"][visibleToUser=true]',
+                '[desc="全部"][visibleToUser=true]',
+              ],
+              position: {
+                left: -70,
+                top: 'height/2',
+              },
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击确定',
+              action: 'clickCenter',
+              matches: [
+                '[desc="确认删除全部历史搜索记录？"][visibleToUser=true]',
+                '[desc="确定"][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'com.xunmeng.pinduoduo',
+      name: '拼多多',
+      groups: [
+        {
+          key: 0,
+          name: '功能类-自动清除搜索历史',
+          matchRoot: true,
+          activityIds: 'com.xunmeng.pinduoduo.activity.NewPageActivity',
+          rules: [
+            {
+              key: 0,
+              name: '1.点击删除按钮',
+              matches: '[desc="清除最近搜索"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 1,
+              preKeys: [0],
+              name: '2.点击全部删除',
+              matches: '[text="全部删除"][clickable=true][visibleToUser=true]',
+            },
+            {
+              key: 2,
+              preKeys: [1],
+              name: '3.点击删除',
+              matches: [
+                '[text="确认删除最近搜索记录吗？"][visibleToUser=true]',
+                '[text="删除"][clickable=true][visibleToUser=true]',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
