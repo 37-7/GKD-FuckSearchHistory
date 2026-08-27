@@ -39,11 +39,11 @@ https://fastly.jsdelivr.net/gh/37-7/GKD-FuckSearchHistory@main/gkd.json5
 
 ### 当前覆盖
 
-当前 JSON5 包含 **28 个应用**：
+当前 JSON5 包含 **27 个应用**：
 
-小红书、Hydrogen、PXVR、百度贴吧、柠檬音乐、网易云音乐、哔哩哔哩、微信、最右、微博、喜马拉雅极速版、夸克网盘、百度网盘、百度网盘国际版、酷安、彩云天气、QooApp、TapTap、软件商店、小米系统应用商店、AppShare、网易有道词典、金山文档、阿里云盘、美团、淘宝、闲鱼、拼多多。
+小红书、Hydrogen、PXVR、百度贴吧、柠檬音乐、网易云音乐、哔哩哔哩、微信、最右、微博、喜马拉雅极速版、夸克网盘、百度网盘、百度网盘国际版、酷安、QooApp、TapTap、软件商店、小米系统应用商店、AppShare、网易有道词典、金山文档、阿里云盘、美团、淘宝、闲鱼、拼多多。
 
-其中，**夸克网盘**规则使用实验性坐标点击，因为对应 WebView 没有暴露可用的无障碍节点，因此默认关闭；仅建议在确认界面与规则适配后手动测试。**彩云天气**当前包含的是“自动关闭更新提示”规则，保留自现有订阅内容。
+其中，**夸克网盘**规则使用实验性坐标点击，因为对应 WebView 没有暴露可用的无障碍节点，因此默认关闭；仅建议在确认界面与规则适配后手动测试。
 
 ### 更新与反馈
 
@@ -89,11 +89,11 @@ https://fastly.jsdelivr.net/gh/37-7/GKD-FuckSearchHistory@main/gkd.json5
 
 ### Currently Covered
 
-The current JSON5 contains rules for **28 apps**:
+The current JSON5 contains rules for **27 apps**:
 
-小红书, Hydrogen, PXVR, 百度贴吧, 柠檬音乐, 网易云音乐, 哔哩哔哩, 微信, 最右, 微博, 喜马拉雅极速版, 夸克网盘, 百度网盘, 百度网盘国际版, 酷安, 彩云天气, QooApp, TapTap, 软件商店, 小米系统应用商店, AppShare, 网易有道词典, 金山文档, 阿里云盘, 美团, 淘宝, 闲鱼, 拼多多.
+小红书, Hydrogen, PXVR, 百度贴吧, 柠檬音乐, 网易云音乐, 哔哩哔哩, 微信, 最右, 微博, 喜马拉雅极速版, 夸克网盘, 百度网盘, 百度网盘国际版, 酷安, QooApp, TapTap, 软件商店, 小米系统应用商店, AppShare, 网易有道词典, 金山文档, 阿里云盘, 美团, 淘宝, 闲鱼, 拼多多.
 
-The **Quark Cloud Drive (夸克网盘)** rule uses experimental coordinate-based taps because the corresponding WebView does not expose usable accessibility nodes, so it is disabled by default. Enable it manually only after confirming that the target UI matches the rule. The current **Caiyun Weather (彩云天气)** entry closes an update prompt rather than clearing search history; it is retained from the existing subscription content.
+The **Quark Cloud Drive (夸克网盘)** rule uses experimental coordinate-based taps because the corresponding WebView does not expose usable accessibility nodes, so it is disabled by default. Enable it manually only after confirming that the target UI matches the rule. 
 
 ### Updates & Feedback
 
